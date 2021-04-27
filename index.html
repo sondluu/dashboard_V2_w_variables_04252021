@@ -86,7 +86,7 @@
                   <th>Avg Weekly Exercise Time (min)</th>
                   <th>Self-logged A1c</th>
                   <th>Self-logged Weight</th>
-                  <th>30-day Weight ▲</th>
+                  <th>Weight ▲ since Program Start</th>
                 </tr>
                 <tr>
                   <td class="hover1"><span id="avg_cal">{avg_cal}</span>
@@ -134,9 +134,9 @@
     
                 </popup-notify>
                   </td>
-                  <td>{step_count}<p>last logged {step_date}</p></td>
-                  <td>{exercise_min}<p>last logged {exercise_date}</p></td>
-                  <td>{a1c}<p>last logged {a1c/date}</p></td>
+                  <td>{step_count}</td>
+                  <td>{exercise_min}</td>
+                  <td>{a1c}<p>last logged {a1c_date}</p></td>
                   <td>{weight}<p>last logged {weight_date}</p></td>
                   <td>{weight_change}<p>lbs</p></td>
                   
@@ -1095,7 +1095,7 @@
 
               <ul class="ddpp-info">
                 <li><span id="l_score">{l_score}</span><span id="l_dot"></span>Digital Learning</li>
-                <li><span id="c_score">{c_score}</span><span id="c_dot"></span>Communication</li>
+                <li><span id="c_score">{c_Score}</span><span id="c_dot"></span>Communication</li>
               </ul>
 
 
@@ -1123,15 +1123,21 @@
 
             </div>
           </div>
-        </section>
-
-
-  
-
-    
-
+        </section>    
 
     </div>
+
+
+
+
+
+
+
+    <!-- JavaScript Section A Starts Here -->
+
+
+
+
 
 
     <script class="popupNotify">
@@ -1165,7 +1171,7 @@
                   position: absolute;
                   // bottom: 125%;
                   z-index: 9;
-                  
+                  width: 257px;
                   background: white;
                   box-shadow: 5px 5px 10px rgba(0,0,0,.3);
                   font-size: .1em;
@@ -1254,680 +1260,19 @@
 
 
 
+ <!-- JavaScript Section A Ends Here -->
 
 
 
-<!-- CSS Sheet Startes Here-->
 
 
-<style>
-@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Orelega+One&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Varela+Round&display=swap");
-body {
-  margin: 0;
-  height: 100vh;
-  font-family: 'Roboto', sans-serif;
-  background-color: #006C5B;
-}
 
-.grid-container {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 0.38fr 1.2fr 0.4fr;
-      grid-template-columns: 0.38fr 1.2fr 0.4fr;
-  -ms-grid-rows: .05fr 2fr 3fr 2fr;
-      grid-template-rows: .05fr 2fr 3fr 2fr;
-      grid-template-areas: "header header header"
- "description main main"
- "description engagement results"
- "description engagement results";
-  height: 100vh;
-  margin: 0;
-  -ms-grid-columns: minmax(auto, max-content);
-      grid-template-columns: minmax(auto, -webkit-max-content);
-      grid-template-columns: minmax(auto, max-content);
-}
 
-.background {
-  width: 80%;
-}
+  <!-- JavaScript Section B Starts Here -->
 
-main {
 
-  -ms-grid-column-span: 2;
-  grid-area: main;
-  background-color: #006c5b;
-}
-
-main .main-container {
-  display: block;
-  background-color: white;
-  margin: 0em .5em 0em .5em;
-  padding: em .1em .02em .1em;
-  border-radius: .4em .4em .4em .4em;
-}
-
-main .main-container h2 {
-  font-size: 1rem;
-  color: #006C5B;
-  padding: 0 0 0 1rem;
-}
-
-main .main-container #noom_data {
-  border-collapse: collapse;
-  width: 97.5%;
-  border: 3px solid;
-  border-radius: 0.5em;
-  border-collapse: collapse;
-  overflow: hidden;
-  background: #006C5B;
-  margin: 0 1rem 1rem 1rem;
-}
-
-main .main-container #noom_data td {
-  /*   border: 2px solid #f4f4f4; */
-  text-align: center;
-  font-size: .9rem;
-  background: white;
-  color: #ed9b33;
-  font-weight: bold;
-  padding-top: .5em;
-  padding-bottom: 0em;
-  border-radius: .4em white;
-}
-
-main .main-container #noom_data td p {
-  font-size: 0.6rem;
-  color: #686868;
-}
-
-main .main-container #avg_cal {
-  padding: 0em 9em;
-}
-
-main .main-container #noom_data th {
-  background: #006C5B;
-  /*   border-color: #f4f4f4; */
-  width: 20rem;
-  height: 2rem;
-  /*   border: 2px solid #f4f4f4; */
-  text-align: center;
-  font-size: 0.8rem;
-  padding: .6em .5em;
-  color: #F8f5f2;
-}
-
-main .main-container #daily_cal {
-  border-radius: .5em;
-}
-
-main .main-container #daily_cal th {
-  height: .5em;
-  font-size: .7rem;
-  width: 3em;
-}
-
-main .main-container #daily_cal td {
-  height: .5em;
-  font-size: .7rem;
-  padding: .5em;
-  width: 7em;
-}
-
-section.description {
-
-  -ms-grid-row-span: 3;
-
-  grid-area: description;
-  background-color: #006C5B;
-  width: 19.5vw;
-}
-
-section.description .dashboard-overview {
-  display: block;
-  background-color: #f8f5f2;
-  margin: 0em .5em 0em .5em;
-  padding: 0.2em .65em 0 .8em;
-  border-radius: .4em;
-}
-
-section.description .instructions {
-  display: block;
-  background-color: #f8f5f2;
-  margin: .5em;
-  padding: .1em .3em 0.3em .8em;
-  border-radius: .4em;
-}
-
-section.description h2 {
-  font-size: 1rem;
-  color: #006C5B;
-  display: block;
-  padding: 0 0 0 0rem;
-}
-
-section.description span {
-  font-size: 0.8rem;
-  font-weight: bold;
-  color: #006C5B;
-}
-
-section.description p {
-  font-size: 0.635rem;
-  color: #686868;
-  font-weight: bold;
-  padding: .3em .5em -1em .5em;
-  line-height: 1.5em;
-}
-
-section.description #note1 {
-  color: #e91111;
-  font-size: .6rem;
-  padding: 0 0 1.5em 0;
-}
-
-section.description #note2 {
-  color: #e91111;
-  font-size: .6rem;
-}
-
-section.engagement {
-  -ms-grid-row-span: 2;
-  grid-area: engagement;
-  background-color: #006c5b;
-}
-
-section.engagement .engagement-container {
-  display: block;
-  background-color: white;
-  margin: .3em .5em 0em .5em;
-  padding: 0em .5em .5em .5em;
-  border-radius: .4em;
-  border-color: none;
-}
-
-section.engagement .engagement-container h2 {
-  color: #006c5b;
-  font-size: 1rem;
-  padding: .5em 0.5em 0 0.5em;
-  margin-top: 0.2em;
-}
-
-section.engagement .engagement-container p {
-  font-size: .6rem;
-  color: #686868;
-  padding: 0;
-}
-
-section.engagement .engagement-container h5 {
-  font-size: .6rem;
-  color: #686868;
-  padding: 0;
-  margin: 0;
-}
-
-section.engagement .engagement-container h5 span {
-  color: #006C5B;
-  font-size: .7rem;
-  padding: 1em 0.5em 0 0;
-  margin-top: 0.2em;
-}
-
-section.engagement .engagement-container .physical-activity {
-  display: block;
-  background: #f8f5f2;
-  margin: 0em .5em .4em .5em;
-  padding: 1em;
-  border-radius: .4em .4em .4em .4em;
-  border-color: none;
-  font-weight: bold;
-}
-
-section.engagement .engagement-container .physical-activity #phys {
-  border-collapse: collapse;
-  width: 100%;
-  border: 0px solid #ddd;
-  margin-bottom: 0;
-  color: #686868;
-  margin-top: .5em;
-}
-
-section.engagement .engagement-container .physical-activity #phys th {
-  width: 10em;
-  height: .5em;
-  border: px solid #ccc;
-  text-align: top;
-  font-size: .45rem;
-}
-
-section.engagement .engagement-container .physical-activity #phys td {
-  width: 10em;
-  height: .5em;
-  border: px solid #ccc;
-  text-align: top;
-}
-
-section.engagement .engagement-container .physical-activity #phys td {
-  font-size: .5rem;
-  text-align: center;
-}
-
-section.engagement .engagement-container .physical-activity #phys_score {
-  display: none;
-}
-
-section.engagement .digital-learning {
-  display: block;
-  background: #f8f5f2;
-  margin: 0em .5em .4em .5em;
-  padding: 1em;
-  border-radius: .4em .4em .4em .4em;
-  border-color: none;
-  font-weight: bold;
-}
-
-section.engagement .digital-learning #learn {
-  border-collapse: collapse;
-  width: 100%;
-  border: 0px solid #ddd;
-  margin-bottom: 0;
-  color: #686868;
-  margin-top: .5em;
-}
-
-section.engagement .digital-learning #learn th {
-  width: 10em;
-  height: .5em;
-  border: px solid #ccc;
-  text-align: top;
-  font-size: .45rem;
-}
-
-section.engagement .digital-learning #learn td {
-  width: 10em;
-  height: .5em;
-  border: px solid #ccc;
-  text-align: top;
-}
-
-section.engagement .digital-learning #learn td {
-  font-size: .5rem;
-  text-align: center;
-}
-
-section.engagement .digital-learning #learn_score {
-  display: none;
-}
-
-section.engagement .weigh-in {
-  display: block;
-  background: #f8f5f2;
-  margin: 0em .5em .4em .5em;
-  padding: 1em;
-  border-radius: .4em .4em .4em .4em;
-  border-color: none;
-  font-weight: bold;
-}
-
-section.engagement .weigh-in #weigh {
-  border-collapse: collapse;
-  width: 100%;
-  border: 0px solid #ddd;
-  margin-bottom: 0;
-  color: #686868;
-  margin-top: .5em;
-}
-
-section.engagement .weigh-in #weigh th {
-  width: 10em;
-  height: .5em;
-  border: px solid #ccc;
-  text-align: top;
-  font-size: .45rem;
-}
-
-section.engagement .weigh-in #weigh td {
-  width: 10em;
-  height: .5em;
-  border: px solid #ccc;
-  text-align: top;
-}
-
-section.engagement .weigh-in #weigh td {
-  font-size: .5rem;
-  text-align: center;
-}
-
-section.engagement .weigh-in #weighin_score {
-  text-align: center;
-  display: none;
-}
-
-section.engagement .communication {
-  display: block;
-  background: #f8f5f2;
-  margin: 0em .5em 0em .5em;
-  padding: 1em;
-  border-radius: .4em .4em .4em .4em;
-  border-color: none;
-  font-weight: bold;
-}
-
-section.engagement .communication #comm {
-  border-collapse: collapse;
-  width: 100%;
-  border: 0px solid #ddd;
-  margin-bottom: 0;
-  color: #686868;
-  margin-top: .5em;
-}
-
-section.engagement .communication #comm th {
-  width: 10em;
-  height: .5em;
-  border: px solid #ccc;
-  text-align: top;
-  font-size: .45rem;
-}
-
-section.engagement .communication #comm td {
-  width: 10em;
-  height: .5em;
-  border: px solid #ccc;
-  text-align: top;
-}
-
-section.engagement .communication #comm td {
-  font-size: .5rem;
-  text-align: center;
-}
-
-section.engagement .communication #comm_score {
-  text-align: center;
-  display: none;
-}
-
-section.ddpp {
-  grid-area: footer;
-  background: red;
-}
-
-header {
-  -ms-grid-column-span: 3;
-  grid-area: header;
-  background: #006C5B;
-  color: #F8F5F2;
-}
-
-header .title {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-header .general-info {
-  font-size: 0.6rem;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  height: auto;
-  padding-top: 2em;
-  padding-left: 5em;
-}
-
-header .general-info ul {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  list-style-type: none;
-  padding: .3rem .1rem 0 0;
-}
-
-header .general-info ul li {
-  padding: 0 2rem 0 0;
-  font-size: 1.2em;
-}
-
-header .general-info ul span {
-  font-weight: bold;
-  font-size: .7rem;
-}
-
-header h1 {
-  font-size: 1.2rem;
-  display: block;
-  width: 16%;
-  position: relative;
-  padding: .5em .5em 0 .5em;
-}
-
-header #patient-name {
-  font-size: 2rem;
-  font-weight: bold;
-}
-
-header img {
-  position: relative;
-  margin-top: 1em;
-  margin-left: 3em;
-}
-
-header .guide {
-  display: block;
-  background-color: #E26751;
-  margin: 1em 2em 1em .3em;
-  padding: 0em 1.5em 0em 1.5em;
-  border-radius: .4em;
-  width: 40%;
-  height: 5em;
-  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
-header .guide p {
-  color: white;
-  font-size: .8rem;
-  line-height: 1.5em;
-  position: flex;
-  font-family: 'Varela Round', sans-serif;
-}
-
-.results {
-  -ms-grid-row-span: 2;
-  grid-area: results;
-  background-color: #006c5b;
-}
-
-.results .results-container {
-  display: block;
-  background-color: white;
-  margin: .3em .5em 0em .5em;
-  padding: 0em .3em .7em .5em;
-  border-radius: .4em;
-  border-color: none;
-}
-
-.results .results-container .results-info {
-  display: block;
-  background: #f8f5f2;
-  margin: 0em .5em 0em .5em;
-  padding: 1em 1em .1em .5em;
-  border-radius: .4em .4em .4em .4em;
-  border-color: none;
-  font-weight: bold;
-}
-
-.results .results-container h2 {
-  color: #006C5B;
-  font-size: 1rem;
-  padding: 0.5em 0.3em 0 0.5em;
-  margin-top: 0.2em;
-}
-
-.results .results-container #week_number {
-  border-collapse: collapse;
-  width: 54%;
-  border: 2px solid;
-  border-radius: 0.5em;
-  border-collapse: collapse;
-  overflow: hidden;
-  background: #006C5B;
-  margin: 0 1em 1.1em 3.5em;
-}
-
-.results .results-container #week_number td {
-  /*   border: 2px solid #f4f4f4; */
-  text-align: center;
-  font-size: 1rem;
-  background: white;
-  color: #ed9b33;
-  font-weight: bold;
-  padding: .2em 0 .2em 0;
-}
-
-.results .results-container #week_number th {
-  background: #006C5B;
-  /*   border-color: #f4f4f4; */
-  width: 20rem;
-  height: 2rem;
-  /*   border: 2px solid #f4f4f4; */
-  text-align: center;
-  font-size: 0.7rem;
-  padding: 0rem;
-  color: #F8f5f2;
-}
-
-.results .results-container #p_score {
-  display: none;
-}
-
-.results .results-container #w_score {
-  display: none;
-}
-
-.results .results-container #l_score {
-  display: none;
-}
-
-.results .results-container #c_score {
-  display: none;
-}
-
-.results .results-container ul {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  list-style-type: none;
-  color: #686868;
-  font-size: .5rem;
-}
-
-.results .results-container ul li {
-  padding: 0.5em 0.5em 0.5em 0;
-  font-size: 1.2em;
-}
-
-.results .results-container p {
-  font-size: 0.635rem;
-  color: #686868;
-  font-weight: bold;
-  line-height: 1.5em;
-  padding: 0 .2em 0 .7em;
-}
-
-.results .results-container #high {
-  font-weight: bold;
-  font-size: .7rem;
-  color: green;
-  padding: 0em;
-}
-
-.results .results-container #low {
-  font-weight: bold;
-  font-size: .7rem;
-  color: #ff0000;
-  padding: 0em;
-}
-
-.results .results-container #engage_def {
-  font-weight: bold;
-  font-size: .7rem;
-  color: #006C5B;
-  padding: 0em;
-}
-
-.results .results-container #overall_engagement {
-  border-collapse: collapse;
-  width: 54%;
-  border: 2px solid;
-  border-radius: 0.5em;
-  border-collapse: collapse;
-  overflow: hidden;
-  margin: .7em 1em 1em 3.5em;
-  background: #006C5B;
-}
-
-.results .results-container #overall_engagement td {
-  text-align: center;
-  font-size: 1rem;
-  background: white;
-  color: #ed9b33;
-  font-weight: bold;
-  padding: .2em 0 .2em 0;
-}
-
-.results .results-container #overall_engagement th {
-  background: #006C5B;
-  width: 20rem;
-  height: 2rem;
-  text-align: center;
-  font-size: 0.7rem;
-  padding: 0rem;
-  color: #F8f5f2;
-}
-
-.results .results-container #overall_score {
-  display: none;
-}
-
-.hover {
-  border: solid 3px #f8f5f2;
-}
-
-.element1 {
-  border: solid 3px rgba(255, 255, 255, 0);
-}
-
-.hover2 {
-  border: solid 3px #f8f5f2;
-}
-
-.hover3 {
-  border: solid 3px #f8f5f2;
-}
-/*# sourceMappingURL=main.css.map */
-
-</style>
-
-
-
-
-
-<!-- CSS Sheet Ends Here -->
-
-
-
-
-
-
-
-<!-- JavaScript Startes Here -->
-
-
-<script>
-
-  
+  <script>
+    
 
 let p1 = document.getElementById("phys").rows[0].cells.item(1).innerHTML;
 let p2 = document.getElementById("phys").rows[0].cells.item(2).innerHTML;
@@ -6176,15 +5521,681 @@ $(document).ready(function(){
 });
 
 
+  </script>
 
 
-</script>
+  <!-- JavaScript Section B Ends Here -->
 
 
 
-<!-- JavaScript Ends Here -->
 
 
+
+
+
+  <!-- CSS Section Starts Here -->
+
+
+
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Orelega+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Varela+Round&display=swap");
+body {
+  margin: 0;
+  height: 100vh;
+  font-family: 'Roboto', sans-serif;
+  background-color: #006C5B;
+}
+
+.grid-container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 0.38fr 1.2fr 0.4fr;
+      grid-template-columns: 0.38fr 1.2fr 0.4fr;
+  -ms-grid-rows: .05fr 2fr 3fr 2fr;
+      grid-template-rows: .05fr 2fr 3fr 2fr;
+      grid-template-areas: "header header header"
+ "description main main"
+ "description engagement results"
+ "description engagement results";
+  height: 100vh;
+  margin: 0;
+  -ms-grid-columns: minmax(auto, max-content);
+      grid-template-columns: minmax(auto, -webkit-max-content);
+      grid-template-columns: minmax(auto, max-content);
+}
+
+.background {
+  width: 80%;
+}
+
+main {
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 2;
+  grid-area: main;
+  background-color: #006c5b;
+}
+
+main .main-container {
+  display: block;
+  background-color: white;
+  margin: 0em .5em 0em .5em;
+  padding: em .1em .02em .1em;
+  border-radius: .4em .4em .4em .4em;
+}
+
+main .main-container h2 {
+  font-size: 1rem;
+  color: #006C5B;
+  padding: 0 0 0 1rem;
+}
+
+main .main-container #noom_data {
+  border-collapse: collapse;
+  width: 97.5%;
+  border: 3px solid;
+  border-radius: 0.5em;
+  border-collapse: collapse;
+  overflow: hidden;
+  background: #006C5B;
+  margin: 0 1rem 1rem 1rem;
+}
+
+main .main-container #noom_data td {
+  /*   border: 2px solid #f4f4f4; */
+  text-align: center;
+  font-size: .9rem;
+  background: white;
+  color: #ed9b33;
+  font-weight: bold;
+  padding-top: .5em;
+  padding-bottom: 0em;
+  border-radius: .4em white;
+}
+
+main .main-container #noom_data td p {
+  font-size: 0.6rem;
+  color: #686868;
+}
+
+main .main-container #avg_cal {
+  padding: 0em 9em;
+}
+
+main .main-container #noom_data th {
+  background: #006C5B;
+  /*   border-color: #f4f4f4; */
+  width: 20em;
+  height: 2rem;
+  /*   border: 2px solid #f4f4f4; */
+  text-align: center;
+  font-size: 0.8rem;
+  padding: .6em .5em;
+  color: #F8f5f2;
+}
+
+main .main-container #daily_cal {
+  border-radius: .5em;
+}
+
+main .main-container #daily_cal th {
+  height: .5em;
+  font-size: .7rem;
+  width: auto;
+}
+
+main .main-container #daily_cal td {
+  height: .5em;
+  font-size: .7rem;
+  padding: .5em;
+  width: auto;
+}
+
+section.description {
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 3;
+  -ms-grid-column: 1;
+  grid-area: description;
+  background-color: #006C5B;
+  width: 19.5vw;
+}
+
+section.description .dashboard-overview {
+  display: block;
+  background-color: #f8f5f2;
+  margin: 0em .5em 0em .5em;
+  padding: 0.2em .65em 0 .8em;
+  border-radius: .4em;
+}
+
+section.description .instructions {
+  display: block;
+  background-color: #f8f5f2;
+  margin: .5em;
+  padding: .1em .3em 0.3em .8em;
+  border-radius: .4em;
+}
+
+section.description h2 {
+  font-size: 1rem;
+  color: #006C5B;
+  display: block;
+  padding: 0 0 0 0rem;
+}
+
+section.description span {
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: #006C5B;
+}
+
+section.description p {
+  font-size: 0.635rem;
+  color: #686868;
+  font-weight: bold;
+  padding: .3em .5em -1em .5em;
+  line-height: 1.5em;
+}
+
+section.description #note1 {
+  color: #e91111;
+  font-size: .6rem;
+  padding: 0 0 1.5em 0;
+}
+
+section.description #note2 {
+  color: #e91111;
+  font-size: .6rem;
+}
+
+section.engagement {
+  -ms-grid-row: 3;
+  -ms-grid-row-span: 2;
+  -ms-grid-column: 2;
+  grid-area: engagement;
+  background-color: #006c5b;
+}
+
+section.engagement .engagement-container {
+  display: block;
+  background-color: white;
+  margin: .3em .5em 0em .5em;
+  padding: 0em .5em .5em .5em;
+  border-radius: .4em;
+  border-color: none;
+}
+
+section.engagement .engagement-container h2 {
+  color: #006c5b;
+  font-size: 1rem;
+  padding: .5em 0.5em 0 0.5em;
+  margin-top: 0.2em;
+}
+
+section.engagement .engagement-container p {
+  font-size: .6rem;
+  color: #686868;
+  padding: 0;
+}
+
+section.engagement .engagement-container h5 {
+  font-size: .6rem;
+  color: #686868;
+  padding: 0;
+  margin: 0;
+}
+
+section.engagement .engagement-container h5 span {
+  color: #006C5B;
+  font-size: .7rem;
+  padding: 1em 0.5em 0 0;
+  margin-top: 0.2em;
+}
+
+section.engagement .engagement-container .physical-activity {
+  display: block;
+  background: #f8f5f2;
+  margin: 0em .5em .4em .5em;
+  padding: 1em;
+  border-radius: .4em .4em .4em .4em;
+  border-color: none;
+  font-weight: bold;
+}
+
+section.engagement .engagement-container .physical-activity #phys {
+  border-collapse: collapse;
+  width: 100%;
+  border: 0px solid #ddd;
+  margin-bottom: 0;
+  color: #686868;
+  margin-top: .5em;
+}
+
+section.engagement .engagement-container .physical-activity #phys th {
+  width: 10em;
+  height: .5em;
+  border: px solid #ccc;
+  text-align: top;
+  font-size: .45rem;
+}
+
+section.engagement .engagement-container .physical-activity #phys td {
+  width: 10em;
+  height: .5em;
+  border: px solid #ccc;
+  text-align: top;
+}
+
+section.engagement .engagement-container .physical-activity #phys td {
+  font-size: .5rem;
+  text-align: center;
+}
+
+section.engagement .engagement-container .physical-activity #phys_score {
+  display: none;
+}
+
+section.engagement .digital-learning {
+  display: block;
+  background: #f8f5f2;
+  margin: 0em .5em .4em .5em;
+  padding: 1em;
+  border-radius: .4em .4em .4em .4em;
+  border-color: none;
+  font-weight: bold;
+}
+
+section.engagement .digital-learning #learn {
+  border-collapse: collapse;
+  width: 100%;
+  border: 0px solid #ddd;
+  margin-bottom: 0;
+  color: #686868;
+  margin-top: .5em;
+}
+
+section.engagement .digital-learning #learn th {
+  width: 10em;
+  height: .5em;
+  border: px solid #ccc;
+  text-align: top;
+  font-size: .45rem;
+}
+
+section.engagement .digital-learning #learn td {
+  width: 10em;
+  height: .5em;
+  border: px solid #ccc;
+  text-align: top;
+}
+
+section.engagement .digital-learning #learn td {
+  font-size: .5rem;
+  text-align: center;
+}
+
+section.engagement .digital-learning #learn_score {
+  display: none;
+}
+
+section.engagement .weigh-in {
+  display: block;
+  background: #f8f5f2;
+  margin: 0em .5em .4em .5em;
+  padding: 1em;
+  border-radius: .4em .4em .4em .4em;
+  border-color: none;
+  font-weight: bold;
+}
+
+section.engagement .weigh-in #weigh {
+  border-collapse: collapse;
+  width: 100%;
+  border: 0px solid #ddd;
+  margin-bottom: 0;
+  color: #686868;
+  margin-top: .5em;
+}
+
+section.engagement .weigh-in #weigh th {
+  width: 10em;
+  height: .5em;
+  border: px solid #ccc;
+  text-align: top;
+  font-size: .45rem;
+}
+
+section.engagement .weigh-in #weigh td {
+  width: 10em;
+  height: .5em;
+  border: px solid #ccc;
+  text-align: top;
+}
+
+section.engagement .weigh-in #weigh td {
+  font-size: .5rem;
+  text-align: center;
+}
+
+section.engagement .weigh-in #weighin_score {
+  text-align: center;
+  display: none;
+}
+
+section.engagement .communication {
+  display: block;
+  background: #f8f5f2;
+  margin: 0em .5em 0em .5em;
+  padding: 1em;
+  border-radius: .4em .4em .4em .4em;
+  border-color: none;
+  font-weight: bold;
+}
+
+section.engagement .communication #comm {
+  border-collapse: collapse;
+  width: 100%;
+  border: 0px solid #ddd;
+  margin-bottom: 0;
+  color: #686868;
+  margin-top: .5em;
+}
+
+section.engagement .communication #comm th {
+  width: 10em;
+  height: .5em;
+  border: px solid #ccc;
+  text-align: top;
+  font-size: .45rem;
+}
+
+section.engagement .communication #comm td {
+  width: 10em;
+  height: .5em;
+  border: px solid #ccc;
+  text-align: top;
+}
+
+section.engagement .communication #comm td {
+  font-size: .5rem;
+  text-align: center;
+}
+
+section.engagement .communication #comm_score {
+  text-align: center;
+  display: none;
+}
+
+section.ddpp {
+  grid-area: footer;
+  background: red;
+}
+
+header {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 3;
+  grid-area: header;
+  background: #006C5B;
+  color: #F8F5F2;
+}
+
+header .title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+header .general-info {
+  font-size: 0.6rem;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  height: auto;
+  padding-top: 2em;
+  padding-left: 5em;
+}
+
+header .general-info ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  list-style-type: none;
+  padding: .3rem .1rem 0 0;
+}
+
+header .general-info ul li {
+  padding: 0 2rem 0 0;
+  font-size: 1.2em;
+}
+
+header .general-info ul span {
+  font-weight: bold;
+  font-size: .7rem;
+}
+
+header h1 {
+  font-size: 1.2rem;
+  display: block;
+  width: 16%;
+  position: relative;
+  padding: .5em .5em 0 .5em;
+}
+
+header #patient-name {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+header img {
+  position: relative;
+  margin-top: 1em;
+  margin-left: 3em;
+}
+
+header .guide {
+  display: block;
+  background-color: #E26751;
+  margin: 1em 2em 1em .3em;
+  padding: 0em 1.5em 0em 1.5em;
+  border-radius: .4em;
+  width: 40%;
+  height: 5em;
+  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+header .guide p {
+  color: white;
+  font-size: .8rem;
+  line-height: 1.5em;
+  position: flex;
+  font-family: 'Varela Round', sans-serif;
+}
+
+.results {
+  -ms-grid-row: 3;
+  -ms-grid-row-span: 2;
+  -ms-grid-column: 3;
+  grid-area: results;
+  background-color: #006c5b;
+}
+
+.results .results-container {
+  display: block;
+  background-color: white;
+  margin: .3em .5em 0em .5em;
+  padding: 0em .3em .7em .5em;
+  border-radius: .4em;
+  border-color: none;
+}
+
+.results .results-container .results-info {
+  display: block;
+  background: #f8f5f2;
+  margin: 0em .5em 0em .5em;
+  padding: 1em 1em .1em .5em;
+  border-radius: .4em .4em .4em .4em;
+  border-color: none;
+  font-weight: bold;
+}
+
+.results .results-container h2 {
+  color: #006C5B;
+  font-size: 1rem;
+  padding: 0.5em 0.3em 0 0.5em;
+  margin-top: 0.2em;
+}
+
+.results .results-container #week_number {
+  border-collapse: collapse;
+  width: 54%;
+  border: 2px solid;
+  border-radius: 0.5em;
+  border-collapse: collapse;
+  overflow: hidden;
+  background: #006C5B;
+  margin: 0 1em 1.1em 3.5em;
+}
+
+.results .results-container #week_number td {
+  /*   border: 2px solid #f4f4f4; */
+  text-align: center;
+  font-size: 1rem;
+  background: white;
+  color: #ed9b33;
+  font-weight: bold;
+  padding: .2em 0 .2em 0;
+}
+
+.results .results-container #week_number th {
+  background: #006C5B;
+  /*   border-color: #f4f4f4; */
+  width: 20rem;
+  height: 2rem;
+  /*   border: 2px solid #f4f4f4; */
+  text-align: center;
+  font-size: 0.7rem;
+  padding: 0rem;
+  color: #F8f5f2;
+}
+
+.results .results-container #p_score {
+  display: none;
+}
+
+.results .results-container #w_score {
+  display: none;
+}
+
+.results .results-container #l_score {
+  display: none;
+}
+
+.results .results-container #c_score {
+  display: none;
+}
+
+.results .results-container ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  list-style-type: none;
+  color: #686868;
+  font-size: .5rem;
+}
+
+.results .results-container ul li {
+  padding: 0.5em 0.5em 0.5em 0;
+  font-size: 1.2em;
+}
+
+.results .results-container p {
+  font-size: 0.635rem;
+  color: #686868;
+  font-weight: bold;
+  line-height: 1.5em;
+  padding: 0 .2em 0 .7em;
+}
+
+.results .results-container #high {
+  font-weight: bold;
+  font-size: .7rem;
+  color: green;
+  padding: 0em;
+}
+
+.results .results-container #low {
+  font-weight: bold;
+  font-size: .7rem;
+  color: #ff0000;
+  padding: 0em;
+}
+
+.results .results-container #engage_def {
+  font-weight: bold;
+  font-size: .7rem;
+  color: #006C5B;
+  padding: 0em;
+}
+
+.results .results-container #overall_engagement {
+  border-collapse: collapse;
+  width: 54%;
+  border: 2px solid;
+  border-radius: 0.5em;
+  border-collapse: collapse;
+  overflow: hidden;
+  margin: .7em 1em 1em 3.5em;
+  background: #006C5B;
+}
+
+.results .results-container #overall_engagement td {
+  text-align: center;
+  font-size: 1rem;
+  background: white;
+  color: #ed9b33;
+  font-weight: bold;
+  padding: .2em 0 .2em 0;
+}
+
+.results .results-container #overall_engagement th {
+  background: #006C5B;
+  width: 20rem;
+  height: 2rem;
+  text-align: center;
+  font-size: 0.7rem;
+  padding: 0rem;
+  color: #F8f5f2;
+}
+
+.results .results-container #overall_score {
+  display: none;
+}
+
+.hover {
+  border: solid 3px #f8f5f2;
+}
+
+.element1 {
+  border: solid 3px rgba(255, 255, 255, 0);
+}
+
+.hover2 {
+  border: solid 3px #f8f5f2;
+}
+
+.hover3 {
+  border: solid 3px #f8f5f2;
+}
+/*# sourceMappingURL=main.css.map */
+  </style>
+
+
+
+  <!-- CSS Section Ends Here -->
 
 
 
