@@ -53,16 +53,16 @@
             
             <div class="dashboard-overview">
                 <h2>Dashboard Overview</h2>
-                <p><span>Noom dDPP Activity Dashboard:</span> An overview of patient weekly engagement in health behavior change activities via the digital diabetes prevention (Noom) app, using activity trackers. Patient self-reported data includes Physical Activities, Digital Learning, Weigh-ins & In-app Communication (with personal coach & support group). 
+                <p><span>Noom dDPP Activity Dashboard:</span> An overview of patient engagement in health behavior change activities via the digital diabetes prevention (Noom) app, using activity trackers. Patient self-reported data includes Physical Activities, Digital Learning, Weigh-ins & In-app Communication (with personal coach & support group). 
                 </p>
-                <p><span>Noom:</span> a diabetes prevention & weight loss behavior mobile application based on the CDC’s evidence-based diabetes prevention program (DPP) curriculum. This 52-week program allows users to log their meals, physical activities, weight, and provides daily articles covering heath behavior topics while connecting them with a support group, and a behavior-change coach</p> 
+                <p><span>Noom:</span> a diabetes prevention & weight loss behavior mobile application based on the CDC’s evidence-based diabetes prevention program (DPP) curriculum. This 52-week program allows users to log their meals, physical activities, weight, and provides daily articles covering heath behavior topics while connecting them with a support group, and a behavior-change coach. 
                 </p>
-                <p id="note1">*This dashboard is part of an IRB-approved research study. Not all your patients will have an active dashboard in EHR.</p>
+                <p id="note1">* This dashboard is part of an IRB-approved research study. Not all your patients will have an active dashboard in the EHR.</p>
             </div>
 
             <div class="instructions">
                 <h2>How to Navigate Dashboard</h2>
-                <p id="note2">Hover over the text in the following definitions to see their associated dashboard sections.</p>
+                <p id="note2">* Hover over the text in the following definitions to see their associated dashboard sections.</p>
                 <p class="element hover"><span>Patient’s Self-logged Noom Activity Data:</span> patient’s self-reported activity data & health indicators part of dDPP program, including those on Noom app</p>
                 <p class="element1 hover1"><span>
                   <img class="alert" src="https://s2.svgbox.net/hero-solid.svg?ic=table&color=006C5B" width="19" height="19">
@@ -98,43 +98,35 @@
                       <table id="daily_cal">
                         <tr>
                           <th>Day</th>
-                          <th>Budget</th>
-                          <th>Intake</th>
+                          <th>Intake | Budget</th>
                         </tr>
                         <tr>
                           <td>Mon</td>
-                          <td>{mon_budget_cal}</td>
-                          <td>{mon_intake_cal}</td>
+                          <td>{mon_cal}</td>
                         </tr>
                         <tr>
                           <td>Tue</td>
-                          <td>{tue_budget_cal}</td>
-                          <td>{tue_intake_cal}</td>
+                          <td>{tue_cal}</td>
                         </tr>
                         <tr>
                           <td>Wed</td>
-                          <td>{wed_budget_cal}</td>
-                          <td>{wed_intake_cal}</td>
+                          <td>{wed_cal}</td>
                         </tr>
                         <tr>
                           <td>Thu</td>
-                          <td>{thu_budget_cal}</td>
-                          <td>{thu_intake_cal}</td>
+                          <td>{thu_cal}</td>
                         </tr>
                         <tr>
                           <td>Fri</td>
-                          <td>{fri_budget_cal}</td>
-                          <td>{fri_intake_cal}</td>
+                          <td>{fri_cal}</td>
                         </tr>
                         <tr>
                           <td>Sat</td>
-                          <td>{sat_budget_cal}</td>
-                          <td>{sat_intake_cal}</td>
+                          <td>{sat_cal}</td>
                         </tr>
                         <tr>
                           <td>Sun</td>
-                          <td>{sun_budget_cal}</td>
-                          <td>{sun_intake_cal}</td>
+                          <td>{sun_cal}</td>
                         </tr>
                       </table>
                   
@@ -142,10 +134,10 @@
     
                 </popup-notify>
                   </td>
-                  <td>{step_count}<p>{step_date}</p></td>
-                  <td>{exercise_min}<p>{exercise_date}</p></td>
-                  <td>{a1c}<p>{a1c_date}</p></td>
-                  <td>{weight}<p>{weight_date}</p></td>
+                  <td>{step_count}<p>last logged {step_date}</p></td>
+                  <td>{exercise_min}<p>last logged {exercise_date}</p></td>
+                  <td>{a1c}<p>last logged {a1c/date}</p></td>
+                  <td>{weight}<p>last logged {weight_date}</p></td>
                   <td>{weight_change}<p>lbs</p></td>
                   
                 </tr>
@@ -1173,7 +1165,7 @@
                   position: absolute;
                   // bottom: 125%;
                   z-index: 9;
-                  width: 250px;
+                  
                   background: white;
                   box-shadow: 5px 5px 10px rgba(0,0,0,.3);
                   font-size: .1em;
@@ -1264,14 +1256,19 @@
 
 
 
+
+<!-- CSS Sheet Startes Here-->
+
+
 <style>
-    @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Orelega+One&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Varela+Round&display=swap");
 body {
   margin: 0;
   height: 100vh;
   font-family: 'Roboto', sans-serif;
+  background-color: #006C5B;
 }
 
 .grid-container {
@@ -1287,6 +1284,9 @@ body {
  "description engagement results";
   height: 100vh;
   margin: 0;
+  -ms-grid-columns: minmax(auto, max-content);
+      grid-template-columns: minmax(auto, -webkit-max-content);
+      grid-template-columns: minmax(auto, max-content);
 }
 
 .background {
@@ -1294,15 +1294,13 @@ body {
 }
 
 main {
-  /* -ms-grid-row: 2;
-  -ms-grid-column: 2; */
+
   -ms-grid-column-span: 2;
   grid-area: main;
   background-color: #006c5b;
 }
 
 main .main-container {
-  display: block;
   display: block;
   background-color: white;
   margin: 0em .5em 0em .5em;
@@ -1336,6 +1334,7 @@ main .main-container #noom_data td {
   font-weight: bold;
   padding-top: .5em;
   padding-bottom: 0em;
+  border-radius: .4em white;
 }
 
 main .main-container #noom_data td p {
@@ -1366,27 +1365,30 @@ main .main-container #daily_cal {
 main .main-container #daily_cal th {
   height: .5em;
   font-size: .7rem;
+  width: 3em;
 }
 
 main .main-container #daily_cal td {
   height: .5em;
   font-size: .7rem;
   padding: .5em;
+  width: 7em;
 }
 
 section.description {
-  /* -ms-grid-row: 2; */
+
   -ms-grid-row-span: 3;
-  /* -ms-grid-column: 1; */
+
   grid-area: description;
   background-color: #006C5B;
+  width: 19.5vw;
 }
 
 section.description .dashboard-overview {
   display: block;
   background-color: #f8f5f2;
   margin: 0em .5em 0em .5em;
-  padding: 0.2em .8em 0 .8em;
+  padding: 0.2em .65em 0 .8em;
   border-radius: .4em;
 }
 
@@ -1394,7 +1396,7 @@ section.description .instructions {
   display: block;
   background-color: #f8f5f2;
   margin: .5em;
-  padding: .1em .8em 0.3em .8em;
+  padding: .1em .3em 0.3em .8em;
   border-radius: .4em;
 }
 
@@ -1431,9 +1433,7 @@ section.description #note2 {
 }
 
 section.engagement {
-  /* -ms-grid-row: 3; */
   -ms-grid-row-span: 2;
-  /* -ms-grid-column: 2; */
   grid-area: engagement;
   background-color: #006c5b;
 }
@@ -1519,7 +1519,6 @@ section.engagement .engagement-container .physical-activity #phys_score {
 
 section.engagement .digital-learning {
   display: block;
-  display: block;
   background: #f8f5f2;
   margin: 0em .5em .4em .5em;
   padding: 1em;
@@ -1562,7 +1561,6 @@ section.engagement .digital-learning #learn_score {
 }
 
 section.engagement .weigh-in {
-  display: block;
   display: block;
   background: #f8f5f2;
   margin: 0em .5em .4em .5em;
@@ -1607,7 +1605,6 @@ section.engagement .weigh-in #weighin_score {
 }
 
 section.engagement .communication {
-  display: block;
   display: block;
   background: #f8f5f2;
   margin: 0em .5em 0em .5em;
@@ -1657,8 +1654,6 @@ section.ddpp {
 }
 
 header {
-  /* -ms-grid-row: 1;
-  -ms-grid-column: 1; */
   -ms-grid-column-span: 3;
   grid-area: header;
   background: #006C5B;
@@ -1678,7 +1673,7 @@ header .general-info {
           justify-content: space-between;
   height: auto;
   padding-top: 2em;
-  padding-left: 4em;
+  padding-left: 5em;
 }
 
 header .general-info ul {
@@ -1720,7 +1715,7 @@ header img {
 
 header .guide {
   display: block;
-  background-color: #1E3932;
+  background-color: #E26751;
   margin: 1em 2em 1em .3em;
   padding: 0em 1.5em 0em 1.5em;
   border-radius: .4em;
@@ -1739,9 +1734,7 @@ header .guide p {
 }
 
 .results {
-  /* -ms-grid-row: 3; */
   -ms-grid-row-span: 2;
-  /* -ms-grid-column: 3; */
   grid-area: results;
   background-color: #006c5b;
 }
@@ -1750,13 +1743,12 @@ header .guide p {
   display: block;
   background-color: white;
   margin: .3em .5em 0em .5em;
-  padding: 0em .5em .7em .5em;
+  padding: 0em .3em .7em .5em;
   border-radius: .4em;
   border-color: none;
 }
 
 .results .results-container .results-info {
-  display: block;
   display: block;
   background: #f8f5f2;
   margin: 0em .5em 0em .5em;
@@ -1769,7 +1761,7 @@ header .guide p {
 .results .results-container h2 {
   color: #006C5B;
   font-size: 1rem;
-  padding: .5em 0.5em 0 0.5em;
+  padding: 0.5em 0.3em 0 0.5em;
   margin-top: 0.2em;
 }
 
@@ -1832,7 +1824,7 @@ header .guide p {
 }
 
 .results .results-container ul li {
-  padding: 0.5em 1em .5em 0;
+  padding: 0.5em 0.5em 0.5em 0;
   font-size: 1.2em;
 }
 
@@ -1904,7 +1896,7 @@ header .guide p {
 }
 
 .element1 {
-  border: solid 3px rgba(255, 99, 71, 0);
+  border: solid 3px rgba(255, 255, 255, 0);
 }
 
 .hover2 {
@@ -1915,11 +1907,27 @@ header .guide p {
   border: solid 3px #f8f5f2;
 }
 /*# sourceMappingURL=main.css.map */
+
 </style>
+
+
+
+
+
+<!-- CSS Sheet Ends Here -->
+
+
+
+
+
+
+
+<!-- JavaScript Startes Here -->
+
 
 <script>
 
-    
+  
 
 let p1 = document.getElementById("phys").rows[0].cells.item(1).innerHTML;
 let p2 = document.getElementById("phys").rows[0].cells.item(2).innerHTML;
@@ -2145,9 +2153,9 @@ function greenDotP9() {
   x9[9].innerHTML = "🟢";
 }
 
-function redDotP8() {
-  let x8 = document.getElementById("phys").rows[2].cells;
-  x8[8].innerHTML = "🔴";
+function redDotP9() {
+  let x9 = document.getElementById("phys").rows[2].cells;
+  x9[9].innerHTML = "🔴";
 }
 
 
@@ -2376,7 +2384,7 @@ function redDotP21() {
 
   
 if (p22 == "H") {
-  greenDotP222();
+  greenDotP22();
 } else if (p22 == "L") {
   redDotP22();
 }
@@ -3045,7 +3053,7 @@ if (l2 == "H") {
   }
   
   function redDotL2() {
-    let x2 = document.getElementById("learning").rows[2].cells;
+    let x2 = document.getElementById("learn").rows[2].cells;
     x2[2].innerHTML = "🔴";
   }
 
@@ -3099,7 +3107,7 @@ function greenDotL5() {
 }
 
 function redDotL5() {
-  let x5 = document.getElementById("learning").rows[2].cells;
+  let x5 = document.getElementById("learn").rows[2].cells;
   x5[5].innerHTML = "🔴";
 }
 
@@ -3491,7 +3499,7 @@ function greenDotL26() {
 
 function redDotL26() {
   let x26 = document.getElementById("learn").rows[2].cells;
-  x26s[26].innerHTML = "🔴";
+  x26[26].innerHTML = "🔴";
 }
 
 
@@ -3674,7 +3682,7 @@ function greenDotL36() {
 
 function redDotL36() {
   let x36 = document.getElementById("learn").rows[2].cells;
-  x34[36].innerHTML = "🔴";
+  x36[36].innerHTML = "🔴";
 }
 
 
@@ -4450,22 +4458,6 @@ function redDotW22() {
 
 
 
-if (w23 == "H") {
-  greenDotW22();
-} else if (w22 == "L") {
-  redDotW22();
-}
-
-function greenDotW22() {
-  let x22 = document.getElementById("weigh").rows[1].cells;
-  x22[22].innerHTML = "🟢";
-}
-
-function redDotW22() {
-  let x22 = document.getElementById("weigh").rows[2].cells;
-  x22[22].innerHTML = "🔴";
-}
-
 
 
 if (w23 == "H") {
@@ -4844,6 +4836,26 @@ function greenDotW43() {
 function redDotW43() {
   let x43 = document.getElementById("weigh").rows[2].cells;
   x43[43].innerHTML = "🔴";
+}
+
+
+
+
+
+if (w44 == "H") {
+  greenDotW44();
+} else if (w44 == "L") {
+  redDotW44();
+}
+
+function greenDotW44() {
+  let x44 = document.getElementById("weigh").rows[1].cells;
+  x44[44].innerHTML = "🟢";
+}
+
+function redDotW44() {
+  let x44 = document.getElementById("weigh").rows[2].cells;
+  x44[44].innerHTML = "🔴";
 }
 
 
@@ -5347,7 +5359,7 @@ if (c9 == "H") {
   
   function redDotC17() {
     let x17 = document.getElementById("comm").rows[2].cells;
-    x14[17].innerHTML = "🔴";
+    x17[17].innerHTML = "🔴";
   }
 
 
@@ -6095,17 +6107,18 @@ if (c9 == "H") {
 
 
   var textarray = [
-    "Consider using the information in this dashboard to have a targeted conversation with your patient about diabetes prevention.",
-
-     "Consider using the information in this dashboard to have a targeted conversation with your patient about healthy eating, exercise, or weight loss, based on their performance in the Noom app.",
-
-     "This dashboard can help you target areas for conversation, education, and support for your patients who are at risk for diabetes.",
 
      "Your patient is currently using a digital diabetes prevention app to help them make healthy lifestyle changes. Consider discussing their experience with the program, and finding areas to provide additional education or support.",
 
-     "Your patient is currently enrolled in a digital diabetes prevention program. If you would like more information on these programs, please click here: https://www.cdc.gov/diabetes/prevention/index.html",
+     "Consider using the information in this dashboard to have a targeted conversation with your patient about diabetes prevention.",
 
-     "Your patient is currently enrolled in a digital diabetes prevention program. If you would like additional diabetes prevention resources to share with your patients, please click here: https://www.cdc.gov/diabetes/prevention/index.html"  // No comma after last entry
+     "This dashboard can help you target areas for conversation, education, and support for your patients who are at risk for diabetes.",
+
+     "Your patient is currently enrolled in a digital diabetes prevention program. If you would like more information on these programs, please check out website: https://www.cdc.gov/diabetes/prevention/index.html",
+
+     "Consider using the information in this dashboard to have a targeted conversation with your patient about healthy eating, exercise, or weight loss, based on their performance in the Noom app.",
+
+     "Your patient is currently enrolled in a digital diabetes prevention program. If you would like additional diabetes prevention resources to share with your patients, please check out website: https://www.cdc.gov/diabetes/prevention/index.html"  // No comma after last entry
  ];
 
  function RndText() {
@@ -6115,7 +6128,7 @@ if (c9 == "H") {
  
  onload = function() { RndText(); }
 
- var inter = setInterval(function() { RndText(); }, 7000);
+ var inter = setInterval(function() { RndText(); }, 5000);
 
 
 
@@ -6135,9 +6148,9 @@ if (c9 == "H") {
 
 $(document).ready(function(){
   $(".element1").hover(function(){
-    $(".hover1").css({"border": "solid 3px #F4364C"});
+    $(".hover1").css({"border": "solid 3px #F4364C", "border-radius": .4 + "em"});
     }, function(){
-    $(".hover1").css("border", "solid 3px rgba(255, 99, 71, 0)");
+    $(".hover1").css({"border": "solid 3px rgba(255, 255, 255, 0)", "border-radius": 0 + "em"});
   });
 });
 
@@ -6165,14 +6178,15 @@ $(document).ready(function(){
 
 
 
-
-
-
-
-
-
-  
 </script>
+
+
+
+<!-- JavaScript Ends Here -->
+
+
+
+
 
           
 
